@@ -198,12 +198,61 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound ):
         await ctx.send(embed = discord.Embed(description = f'** {ctx.author.name}, command not found.**', color=0x0c0c0c))
 
-
 @client.event
 async def on_ready():
     activity = discord.Game(name=";help \\\ временно отключены рандом-команды", type=3)
     await client.change_presence(status=discord.Status.idle, activity=activity)
 
+@client.command()
+async def fox(ctx):
+    response = requests.get('https://some-random-api.ml/img/fox') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Random Fox') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    embed.set_footer(text=f"Request by: {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed = embed) # Отправляем Embed
+
+@client.command()
+async def cat(ctx):
+    response = requests.get('https://some-random-api.ml/img/cat') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Random Cat') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    embed.set_footer(text=f"Request by: {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed = embed) # Отправляем Embed
+
+@client.command()
+async def dog(ctx):
+    response = requests.get('https://some-random-api.ml/img/dog') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Random Dog') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    embed.set_footer(text=f"Request by: {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed = embed) # Отправляем Embed
+
+@client.command()
+async def wink(ctx):
+    response = requests.get('https://some-random-api.ml/animu/wink') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Winking ') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    embed.set_footer(text=f"Request by: {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed = embed) # Отправляем Embed
+
+@client.command()
+async def koala(ctx):
+    response = requests.get('https://some-random-api.ml/img/koala') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Random Koala') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    embed.set_footer(text=f"Request by: {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed = embed) # Отправляем Embed
+    
 token = os.environ.get('BOT_TOKEN')
 
 client.run(str(token))
